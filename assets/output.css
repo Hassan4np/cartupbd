@@ -283,6 +283,9 @@
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
   }
+  .mt-5 {
+    margin-top: calc(var(--spacing) * 5);
+  }
   .mt-15 {
     margin-top: calc(var(--spacing) * 15);
   }
@@ -1058,6 +1061,11 @@
     @media (width >= 768px) {
       font-size: var(--text-xl);
       line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+  .lg\:mt-6 {
+    @media (width >= 992px) {
+      margin-top: calc(var(--spacing) * 6);
     }
   }
   .lg\:mb-5 {
