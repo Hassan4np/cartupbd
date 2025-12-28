@@ -28,7 +28,7 @@
     <div>
       <!-- All Products Tab -->
       <div id="all" class="tab-content">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4 lg:gap-5 xl:gap-6">
           {% for product in collections.all.products limit: 10 %}
             {% render 'product-card', product: product %}
           {% else %}
@@ -40,13 +40,6 @@
       <!-- Collection Tabs -->
       {% for block in section.blocks %}
         <div id="tab-{{ forloop.index }}" class="tab-content hidden">
-          <!-- Debug Info -->
-          <div class="bg-yellow-100 p-4 mb-4 text-sm">
-            <p><strong>Debug Info:</strong></p>
-            <p>Collection Handle: {{ block.settings.collection.handle }}</p>
-            <p>Collection Title: {{ block.settings.collection.title }}</p>
-            <p>Product Count: {{ collections[block.settings.collection.handle].products.size }}</p>
-          </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
             {% if block.settings.collection != blank %}

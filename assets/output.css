@@ -529,6 +529,9 @@
   .flex-col {
     flex-direction: column;
   }
+  .flex-row {
+    flex-direction: row;
+  }
   .items-center {
     align-items: center;
   }
@@ -1586,6 +1589,11 @@
   .xl\:text-\[55px\] {
     @media (width >= 1240px) {
       font-size: 55px;
+    }
+  }
+  .\32 xl\:grid-cols-5 {
+    @media (width >= 1400px) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
   .\32 xl\:py-12\.5 {
