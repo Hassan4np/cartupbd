@@ -119,36 +119,16 @@
     },
     "daily_best_sells": {
       "type": "daily-best-sells",
-      "blocks": {
-        "slide_LYVb3B": {
-          "type": "slide",
-          "settings": {
-            "bg_color": "#f2d3bf",
-            "highlight_text": "100%",
-            "subtitle": "Organic Vegetables",
-            "heading": "The Best Organic Products",
-            "description": "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>",
-            "button_text": "shop now",
-            "button_link": ""
-          }
-        },
-        "slide_RqpLh6": {
-          "type": "slide",
-          "settings": {
-            "bg_color": "#c7f2bf",
-            "highlight_text": "100%",
-            "subtitle": "Organic Vegetables",
-            "heading": "The Best Organic",
-            "description": "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>",
-            "button_text": "shop now",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_LYVb3B",
-        "slide_RqpLh6"
-      ],
+      "settings": {
+        "section_title": "Daily Best Sells",
+        "collection": "all",
+        "max_products": 8,
+        "show_hot_tag": true,
+        "show_sold_progress": true
+      }
+    },
+    "method": {
+      "type": "method",
       "settings": {}
     },
     "about": {
@@ -161,6 +141,7 @@
     "top_product",
     "popular_products",
     "daily_best_sells",
+    "method",
     "about"
   ]
 }
