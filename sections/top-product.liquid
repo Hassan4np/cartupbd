@@ -1,0 +1,73 @@
+<div class="topProduct">
+    <div class="container">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+            {% for block in section.blocks %}
+            <div class="px-5 lg:px-7 xl:px-10 py-10 lg:py-14 xl:py-20 relative z-1 rounded-[10px] overflow-hidden" {{ block.shopify_attributes }}>
+                {% if block.settings.bg_image %}
+                    {{ block.settings.bg_image | image_url: width: 600 | image_tag: class: 'size-full left-0 top-0 object-cover absolute -z-1', loading: 'lazy' }}
+                {% endif %}
+                <h3 class="max-w-57 text-xl lg:text-2xl font-bold text-heading mb-5 lg:mb-7">
+                    {{ block.settings.heading }}
+                </h3>
+                <a href="{{ block.settings.button_link }}" class="btn">{{ block.settings.button_text }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Top Product",
+  "tag": "section",
+  "class": "top-product-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Product Title"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Product",
+      "blocks": [
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        },
+        {
+          "type": "product_card"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3
+}
+{% endschema %}
