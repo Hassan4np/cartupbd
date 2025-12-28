@@ -8,7 +8,10 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-orange-500: oklch(70.5% 0.213 47.604);
+    --color-yellow-100: oklch(97.3% 0.071 103.193);
     --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-gray-300: oklch(87.2% 0.01 258.338);
@@ -717,6 +720,9 @@
       background-color: color-mix(in oklab, var(--color-white) 6%, transparent);
     }
   }
+  .bg-yellow-100 {
+    background-color: var(--color-yellow-100);
+  }
   .object-contain {
     object-fit: contain;
   }
@@ -904,6 +910,9 @@
   .text-heading {
     color: var(--color-heading);
   }
+  .text-orange-500 {
+    color: var(--color-orange-500);
+  }
   .text-para {
     color: var(--color-para);
   }
@@ -912,6 +921,9 @@
   }
   .text-primary\! {
     color: var(--color-primary) !important;
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
   }
   .text-secondary {
     color: var(--color-secondary);

@@ -29,9 +29,10 @@
       <!-- All Products Tab -->
       <div id="all" class="tab-content">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
-          {% assign all_products = collections.all.products | slice: 0, 10 %}
-          {% for product in all_products %}
+          {% for product in collections.all.products limit: 10 %}
             {% render 'product-card', product: product %}
+          {% else %}
+            <p class="text-red-500">No products found in All Products</p>
           {% endfor %}
         </div>
       </div>
@@ -39,14 +40,27 @@
       <!-- Collection Tabs -->
       {% for block in section.blocks %}
         <div id="tab-{{ forloop.index }}" class="tab-content hidden">
+          <!-- Debug Info -->
+          <div class="bg-yellow-100 p-4 mb-4 text-sm">
+            <p><strong>Debug Info:</strong></p>
+            <p>Collection Handle: {{ block.settings.collection.handle }}</p>
+            <p>Collection Title: {{ block.settings.collection.title }}</p>
+            <p>Product Count: {{ collections[block.settings.collection.handle].products.size }}</p>
+          </div>
+          
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
             {% if block.settings.collection != blank %}
-              {% assign collection_products = collections[block.settings.collection.handle].products | slice: 0, 10 %}
-              {% for product in collection_products %}
-                {% render 'product-card', product: product %}
-              {% endfor %}
+              {% assign selected_collection = collections[block.settings.collection.handle] %}
+              
+              {% if selected_collection.products.size > 0 %}
+                {% for product in selected_collection.products limit: 10 %}
+                  {% render 'product-card', product: product %}
+                {% endfor %}
+              {% else %}
+                <p class="text-red-500">This collection has no products</p>
+              {% endif %}
             {% else %}
-              <p class="text-gray-500">No collection selected</p>
+              <p class="text-orange-500">Please select a collection from theme customizer</p>
             {% endif %}
           </div>
         </div>
@@ -56,24 +70,29 @@
 </div>
 
 <script>
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  tabButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      // Reset all buttons
-      tabButtons.forEach((b) => {
-        b.classList.remove('text-secondary', 'active');
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        // Reset all buttons
+        tabButtons.forEach((b) => {
+          b.classList.remove('text-secondary', 'active');
+        });
+        
+        // Hide all contents
+        tabContents.forEach((content) => content.classList.add('hidden'));
+        
+        // Activate current button
+        btn.classList.add('text-secondary', 'active');
+        
+        // Show current content
+        const targetTab = document.getElementById(btn.dataset.tab);
+        if (targetTab) {
+          targetTab.classList.remove('hidden');
+        }
       });
-      
-      // Hide all contents
-      tabContents.forEach((content) => content.classList.add('hidden'));
-      
-      // Activate current button
-      btn.classList.add('text-secondary', 'active');
-      
-      // Show current content
-      document.getElementById(btn.dataset.tab).classList.remove('hidden');
     });
   });
 </script>
