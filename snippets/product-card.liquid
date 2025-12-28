@@ -7,7 +7,7 @@
   
   <a href="{{ product.url }}">
     {% if product.featured_image %}
-      {{ product.featured_image | image_url: width: 300 | image_tag: class: 'size-55 lg:size-62.5 object-center mb-1', loading: 'lazy' }}
+      {{ product.featured_image | image_url: width: 300 | image_tag: class: 'size-57 lg:size-62.5 object-center mb-1 mx-auto', loading: 'lazy' }}
     {% else %}
       {{ 'product-1' | placeholder_svg_tag: 'size-55 lg:size-62.5 object-center mb-1' }}
     {% endif %}
