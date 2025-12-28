@@ -24,10 +24,24 @@
             "button_link": "",
             "image": "shopify://shop_images/banner1.png"
           }
+        },
+        "slide_b4MaA9": {
+          "type": "slide",
+          "settings": {
+            "bg_color": "#de5a06",
+            "highlight_text": "90%",
+            "subtitle": "Organic Vegetables",
+            "heading": "The Best Organic",
+            "description": "<p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet<br/></strong></p>",
+            "button_text": "shop now",
+            "button_link": "",
+            "image": "shopify://shop_images/banner1.png"
+          }
         }
       },
       "block_order": [
-        "slide_RGUzbF"
+        "slide_RGUzbF",
+        "slide_b4MaA9"
       ],
       "settings": {}
     },
