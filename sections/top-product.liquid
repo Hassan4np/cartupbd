@@ -1,4 +1,4 @@
-<div class="topProduct">
+<div class="topProduct mt-10 md:mt-14 lg:mt-19">
     <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
             {% for block in section.blocks %}
@@ -6,7 +6,7 @@
                 {% if block.settings.bg_image %}
                     {{ block.settings.bg_image | image_url: width: 600 | image_tag: class: 'size-full left-0 top-0 object-cover absolute -z-1', loading: 'lazy' }}
                 {% endif %}
-                <h3 class="max-w-57 text-xl lg:text-2xl font-bold text-heading mb-5 lg:mb-7">
+                <h3 class="max-w-50 text-xl lg:text-2xl font-bold text-heading mb-5 lg:mb-7">
                     {{ block.settings.heading }}
                 </h3>
                 <a href="{{ block.settings.button_link }}" class="btn">{{ block.settings.button_text }}</a>
