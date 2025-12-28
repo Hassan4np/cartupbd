@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Codec Pro";
+  src: url('https://cdn.shopify.com/s/files/1/0968/5939/0269/files/CodecPro-News.ttf?v=1764010672') format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face { 
+  font-family: "Codec Pro";
+  src: url('https://cdn.shopify.com/s/files/1/0968/5939/0269/files/CodecPro-Bold.ttf?v=1764010671') format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Theme Variables */
+@theme {
+  --color-primary: #65A241;
+  --color-gray: #F2F7F4;
+  --color-111: #111111;
+  --color-vpara: #686868;
+  --color-para: #686868;
+  --color-wpara: #F3F8F0;
+  --color-heading: #252624;
+  --color-wheading: #FCFFFA;
+  --color-para2: #515151;
+
+  --breakpoint-xs: 390px;
+  --breakpoint-sm: 430px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1240px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1520px;
+
+  --font-Codec: 'Codec Pro', sans-serif;
+}
+:root {
+  --font-body-family: "Codec Pro", sans-serif;
+  --font-heading-family: "Codec Pro", sans-serif;
+}
+@layer base {
+  .btn {
+    @apply rounded-md relative px-3 md:px-6 min-h-10 md:min-h-12.5 flex items-center justify-center bg-primary hover:bg-[#619344]! text-sm md:text-base font-Codec text-white hover:text-heading transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-light {
+    @apply bg-gray border border-solid border-primary hover:bg-primary text-heading hover:text-white transition-all duration-300 cursor-pointer;
+  }
+  .fromInputClass {
+    @apply w-full px-4 md:px-6 min-h-12 md:min-h-14 lg:min-h-16 rounded-lg bg-primary text-lg lg:text-xl text-black/80 placeholder:text-[#ABABAB] border border-solid border-[#EFEFEF] outline-none ring-primary/50 ring-0 focus:ring-2;
+  }
+}
+body{
+   font-family: "Codec Pro";
+ }
+h1,h2,h3,h4,h5{
+  font-weight: 700;
+   font-family: "Codec Pro";
+}
+.container {
+  width: 100%;
+  max-width: 1350px !important;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+
+html,
+body,
+html body {
+  overflow-x: hidden;  
+}
+html{
+   scroll-behavior: smooth;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  height: 0px !important;
+}
+  @media(max-width: 767px) {
+    .product-details-banner-area .product-description li:before{
+      top: -1px !important;
+    }
+}
+
+.about-content-info p{
+  margin-bottom: 8px;
+}
+
+.quality2 .common-title  p {
+  text-align: center;
+  font-size: 0.875rem; 
+  font-weight: 300;
+  line-height: 160%;
+  max-width: 21.25rem; 
+  margin-left: auto;
+  margin-right: auto;
+  color: #636363;
+}
+.product-details-banner-area h3{
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #252624;
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+.quality2 .common-title   p {
+    font-size: 1.125rem; /* 18px */
+    max-width: max-content;
+    margin-left: 0;
+  }
+}
+
+
+@media (min-width: 1280px) {
+ .quality2 .common-title  p {
+    font-size: 1.25rem; /* 20px */
+  }
+}
