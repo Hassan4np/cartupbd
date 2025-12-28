@@ -3,7 +3,12 @@
   <head>
     {% render 'meta-tags' %}
     {{ 'output.css' | asset_url | stylesheet_tag }}
-
+    {{ 'animi-btn.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper.js' | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
+    {{ 'aos.css' | asset_url | stylesheet_tag }}
+    {{ 'aos.js' | asset_url | script_tag }}
 
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -25,6 +30,5 @@
     {{ content_for_layout }}
 
     {% sections 'footer-group' %}
-
   </body>
 </html>

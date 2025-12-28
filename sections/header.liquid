@@ -183,7 +183,8 @@
           class="relative py-4.5 lg:py-5 px-2! cursor-pointer hover:scale-105 transition-all duration-300"
           aria-label="Shopping Cart"
         >
-          {%- render 'cart-icon' -%}
+        cart
+          {% comment %} {%- render 'cart-icon' -%} {% endcomment %}
           <span
             id="cart-count"
             class="cart-count-badge absolute top-2.5 right-1 bg-black text-white text-xs rounded-full p-1.5 hidden"
@@ -196,7 +197,8 @@
           class="cursor-pointer py-4.5 lg:py-5 px-2! hover:scale-105 transition-all duration-300"
           aria-label="Account"
         >
-          {%- render 'profile-icon' -%}
+          {% comment %} {%- render 'profile-icon' -%} {% endcomment %}
+           account
         </a>
 
       </div>

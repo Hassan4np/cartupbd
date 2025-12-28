@@ -712,6 +712,9 @@
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
   }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
   .hover\:scale-105 {
     &:hover {
       @media (hover: hover) {
