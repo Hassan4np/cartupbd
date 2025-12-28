@@ -162,6 +162,10 @@
       ],
       "settings": {}
     },
+    "subscribe": {
+      "type": "subscribe",
+      "settings": {}
+    },
     "about": {
       "type": "about",
       "settings": {}
@@ -173,6 +177,7 @@
     "popular_products",
     "daily_best_sells",
     "method",
+    "subscribe",
     "about"
   ]
 }
