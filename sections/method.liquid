@@ -1,5 +1,80 @@
-<div class="method">
-    <div class="container">
-        dddss
+<div class="method mt-5 lg:mt-7 xl:mt-10">
+  <div class="container">
+    <div class="grid grid-cols-2 lg:grid-cols-3 bg-[#F4F6FA] rounded-xl">
+
+      {% for block in section.blocks %}
+        <div class="p-4 lg:p-5 xl:p-6 flex items-center  gap-4 lg:gap-5" {{ block.shopify_attributes }}>
+          
+          {% if block.settings.icon != blank %}
+            <img
+              src="{{ block.settings.icon | image_url: width: 120 }}"
+              alt="{{ block.settings.title }}"
+              class="size-12 lg:size-15"
+              width="60"
+              height="60"
+            >
+          {% endif %}
+
+          <div>
+            {% if block.settings.title != blank %}
+              <h5 class="text-lg lg:text-xl font-semibold text-subheading mb-1">
+                {{ block.settings.title }}
+              </h5>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <p class="text-base lg:text-lg font-medium text-gray">
+                {{ block.settings.description }}
+              </p>
+            {% endif %}
+          </div>
+
+        </div>
+      {% endfor %}
+
     </div>
+  </div>
 </div>
+
+{% schema %}
+{
+  "name": "Method Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "method_item",
+      "name": "Method Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fast Delivery"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "We deliver within 24 hours"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Method Grid",
+      "blocks": [
+        { "type": "method_item" },
+        { "type": "method_item" },
+        { "type": "method_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
