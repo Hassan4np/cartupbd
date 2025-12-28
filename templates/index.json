@@ -45,13 +45,18 @@
       ],
       "settings": {}
     },
+    "top_product": {
+      "type": "top-product",
+      "settings": {}
+    },
     "about": {
       "type": "about",
       "settings": {}
-    }
+    },
   },
   "order": [
     "banner",
-    "about"
+    "top_product",
+    "about",
   ]
 }
