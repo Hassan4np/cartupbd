@@ -83,14 +83,19 @@
       ],
       "settings": {}
     },
+    "popular_products": {
+      "type": "popular-products",
+      "settings": {}
+    },
     "about": {
       "type": "about",
       "settings": {}
-    }
+    },
   },
   "order": [
     "banner",
     "top_product",
+    "popular_products",
     "about"
   ]
 }

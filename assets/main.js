@@ -23,3 +23,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function addToCart(variantId) {
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: variantId,
+      quantity: 1
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert('Product added to cart!');
+    // Cart update করার জন্য
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}

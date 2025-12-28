@@ -1,0 +1,134 @@
+<div class="popular-product py-5 lg:py-8 xl:py-10 2xl:py-12.5">
+  <div class="container">
+    <div class="flex items-center justify-between gap-2 mb-5 lg:mb-7 xl:mb-10">
+      <h2 class="text-2xl lg:text-[32px] font-bold text-heading">{{ section.settings.section_title }}</h2>
+      <div>
+        <!-- Tab Buttons -->
+        <div class="flex items-center gap-4 lg:gap-5">
+          <button
+            class="tab-btn text-base md:text-lg text-heading cursor-pointer text-secondary hover:text-secondary duration-300 font-bold active"
+            data-tab="all"
+          >
+            All
+          </button>
+          {% for block in section.blocks %}
+            <button
+              class="tab-btn text-base md:text-lg text-heading cursor-pointer hover:text-secondary duration-300 font-bold"
+              data-tab="tab-{{ forloop.index }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.tab_title }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div>
+      <!-- All Products Tab -->
+      <div id="all" class="tab-content">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
+          {% assign all_products = collections.all.products | slice: 0, 10 %}
+          {% for product in all_products %}
+            {% render 'product-card', product: product %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Collection Tabs -->
+      {% for block in section.blocks %}
+        <div id="tab-{{ forloop.index }}" class="tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5 xl:gap-6">
+            {% if block.settings.collection != blank %}
+              {% assign collection_products = collections[block.settings.collection.handle].products | slice: 0, 10 %}
+              {% for product in collection_products %}
+                {% render 'product-card', product: product %}
+              {% endfor %}
+            {% else %}
+              <p class="text-gray-500">No collection selected</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      // Reset all buttons
+      tabButtons.forEach((b) => {
+        b.classList.remove('text-secondary', 'active');
+      });
+      
+      // Hide all contents
+      tabContents.forEach((content) => content.classList.add('hidden'));
+      
+      // Activate current button
+      btn.classList.add('text-secondary', 'active');
+      
+      // Show current content
+      document.getElementById(btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Popular Products",
+  "tag": "section",
+  "class": "popular-products-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Popular Products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title",
+          "default": "Category Name"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Popular Products",
+      "blocks": [
+        {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Milks & Dairies"
+          }
+        },
+        {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Coffees & Teas"
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5
+}
+{% endschema %}
