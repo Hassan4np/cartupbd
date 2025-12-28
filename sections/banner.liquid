@@ -1,0 +1,201 @@
+{% stylesheet %}
+  .review .swiper-button-prev {
+    position: absolute;
+    left: -60px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+  }
+  .review .swiper-button-next {
+    position: absolute;
+    right: -60px !important;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 15px;
+    color: #65a241;
+  }
+  .swiper-button-next:hover:after,
+  .swiper-button-prev:hover:after {
+    color: #fff;
+  }
+
+  /* Equal Height Fix */
+  .review .swiper-slide {
+    height: auto !important;
+  }
+  .review .swiper-slide > div {
+    height: 100%;
+  }
+
+  .review-card {
+    background: #f8f8f8;
+    transition: 0.3s ease;
+    display: flex;
+    gap: 24px;
+    padding: 8px;
+    border-radius: 16px;
+    height: 100%; /* equal height */
+  }
+
+  .image-box {
+    width: 40%;
+  }
+  .info {
+    width: 60%;
+  }
+  .review-card p {
+    color: #444;
+  }
+  .review-card .stars img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .review .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    opacity: 1;
+    transition: all 0.3s ease;
+    border: 1px solid #252624;
+  }
+
+  .review .swiper-pagination-bullet-active {
+    background: #252624;
+    width: 28px;
+    height: 10px;
+    border-radius: 10px;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .image-box,
+    .info {
+      width: 100%;
+    }
+    .review .swiper-button-prev,
+    .review .swiper-button-next {
+      display: none;
+    }
+    .review-card {
+      gap: 16px;
+      padding: 8px;
+      border-radius: 12px;
+    }
+  }
+{% endstylesheet %}
+
+<div class="review py-8 bg-white md:py-12 lg:py-18 xl:pt-25 relative">
+  <div class="container">
+    {% comment %} <div class="text-center lg:mb-8">
+      {% render 'common-title',
+        title: section.settings.title,
+        title_class: 'text-center!',
+        desc: section.settings.desc,
+        desc_class: 'max-w-90 lg:max-w-125 mx-auto! text-center!',
+        class: 'text-center!'
+      %}
+    </div> {% endcomment %}
+
+    <div class="relative md:mx-15">
+      <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide pb-10 lg:pb-0">
+              <div class="review-card">
+                <div class="image-box relative">
+                  {% if block.settings.review_image %}
+                    <img
+                      src="{{ block.settings.review_image | image_url }}"
+                      width=""
+                      height=""
+                      class="w-full h-full object-cover rounded-md lg:rounded-xl"
+                    >
+                  {% endif %}
+                </div>
+
+                <div class="info flex flex-col justify-between py-3 lg:py-5 pr-3">
+                  <div>
+                    <div class="stars flex items-center gap-1 mb-3">
+                    </div>
+                    <p class="text-xs lg:text-base leading-relaxed italic text-[#515151]! max-w-77">
+                      {{ block.settings.desc }}
+                    </p>
+                  </div>
+
+                  <div class="mt-4">
+                    <h4 class="text-sm lg:text-lg font-medium text-heading!">{{ block.settings.name }}</h4>
+                    <span class="text-sm text-[#515151]">{{ block.settings.designation }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-pagination md:hidden"></div>
+      </div>
+
+      <div
+        class="swiper-button-prev bg-white border border-solid border-[#F0F0F0] hover:bg-[#2E2E2E] transition-all duration-300 rounded-full w-11 h-11 flex items-center justify-center shadow"
+      ></div>
+      <div
+        class="swiper-button-next bg-white border border-solid border-[#F0F0F0] hover:bg-[#2E2E2E] transition-all duration-300 rounded-full w-11 h-11 flex items-center justify-center shadow"
+      ></div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  const swiper = new Swiper('.review-slider', {
+    slidesPerView: 2,
+    spaceBetween: 28,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: {
+      320: { slidesPerView: 1.1, spaceBetween: 8 },
+      768: { slidesPerView: 1.5 },
+      992: { slidesPerView: 2 },
+    },
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Review",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Promise"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Section Description",
+      "default": "We provide top-quality ingredients and transparent sourcing."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_review",
+      "name": "Image Review",
+      "settings": [
+        { "type": "image_picker", "id": "review_image", "label": "Review Image" },
+        { "type": "textarea", "id": "desc", "label": "Review Text" },
+        { "type": "text", "id": "name", "label": "Reviewer Name" },
+        { "type": "text", "id": "designation", "label": "Designation" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Review Section" }]
+}
+{% endschema %}
