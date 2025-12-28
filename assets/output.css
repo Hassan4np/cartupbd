@@ -292,6 +292,9 @@
   .mt-5 {
     margin-top: calc(var(--spacing) * 5);
   }
+  .mt-7 {
+    margin-top: calc(var(--spacing) * 7);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
@@ -968,6 +971,16 @@
       margin-top: calc(var(--spacing) * 6);
     }
   }
+  .md\:mt-7 {
+    @media (width >= 768px) {
+      margin-top: calc(var(--spacing) * 7);
+    }
+  }
+  .md\:mt-10 {
+    @media (width >= 768px) {
+      margin-top: calc(var(--spacing) * 10);
+    }
+  }
   .md\:mt-14 {
     @media (width >= 768px) {
       margin-top: calc(var(--spacing) * 14);
@@ -1114,9 +1127,19 @@
       margin-top: calc(var(--spacing) * 6);
     }
   }
+  .lg\:mt-10 {
+    @media (width >= 992px) {
+      margin-top: calc(var(--spacing) * 10);
+    }
+  }
   .lg\:mt-13 {
     @media (width >= 992px) {
       margin-top: calc(var(--spacing) * 13);
+    }
+  }
+  .lg\:mt-15 {
+    @media (width >= 992px) {
+      margin-top: calc(var(--spacing) * 15);
     }
   }
   .lg\:mt-18 {
