@@ -28,7 +28,7 @@
 }
 @layer base {
   .btn {
-    @apply rounded-md relative px-3 md:px-6 min-h-10 md:min-h-12.5 flex items-center justify-center bg-primary hover:bg-[#619344]! text-sm md:text-base  text-white hover:text-heading transition-all duration-300 cursor-pointer;
+    @apply rounded-md relative px-3 md:px-6 min-h-10 max-w-max font-poppins! capitalize flex items-center justify-center bg-primary hover:bg-[#619344]! text-sm md:text-base  text-white font-semibold transition-all duration-300 cursor-pointer;
   }
 
   .btn-light {
