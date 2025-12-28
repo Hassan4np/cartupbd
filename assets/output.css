@@ -1346,6 +1346,12 @@
       height: calc(var(--spacing) * 85);
     }
   }
+  .lg\:size-full {
+    @media (width >= 992px) {
+      width: 100%;
+      height: 100%;
+    }
+  }
   .lg\:h-30 {
     @media (width >= 992px) {
       height: calc(var(--spacing) * 30);

@@ -117,15 +117,20 @@
         "section_title": "Popular Products"
       }
     },
+    "daily_best_sells": {
+      "type": "daily-best-sells",
+      "settings": {}
+    },
     "about": {
       "type": "about",
       "settings": {}
-    }
+    },
   },
   "order": [
     "banner",
     "top_product",
     "popular_products",
+    "daily_best_sells",
     "about"
   ]
 }
