@@ -1,31 +1,15 @@
 @import "tailwindcss";
-@font-face {
-  font-family: "Codec Pro";
-  src: url('https://cdn.shopify.com/s/files/1/0968/5939/0269/files/CodecPro-News.ttf?v=1764010672') format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap');
 
-@font-face { 
-  font-family: "Codec Pro";
-  src: url('https://cdn.shopify.com/s/files/1/0968/5939/0269/files/CodecPro-Bold.ttf?v=1764010671') format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* Theme Variables */
 @theme {
-  --color-primary: #65A241;
-  --color-gray: #F2F7F4;
-  --color-111: #111111;
-  --color-vpara: #686868;
-  --color-para: #686868;
-  --color-wpara: #F3F8F0;
-  --color-heading: #252624;
-  --color-wheading: #FCFFFA;
-  --color-para2: #515151;
+  --color-primary: #F53E32;
+  --color-secondary: #3BB77E;
+  --color-heading: #253D4E;
+  --color-subheading: #2B2B2D;
+  --color-para: #7A7A7A;
+  --color-gray: #ADADAD;
 
   --breakpoint-xs: 390px;
   --breakpoint-sm: 430px;
@@ -35,11 +19,12 @@
   --breakpoint-2xl: 1400px;
   --breakpoint-3xl: 1520px;
 
-  --font-Codec: 'Codec Pro', sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
 }
 :root {
-  --font-body-family: "Codec Pro", sans-serif;
-  --font-heading-family: "Codec Pro", sans-serif;
+  --font-body-family: "Poppins", sans-serif;
+  --font-heading-family: "Quicksand", sans-serif;
 }
 @layer base {
   .btn {
@@ -54,11 +39,11 @@
   }
 }
 body{
-   font-family: "Codec Pro";
+   font-family: "Poppins";
  }
 h1,h2,h3,h4,h5{
   font-weight: 700;
-   font-family: "Codec Pro";
+   font-family: "Quicksand";
 }
 .container {
   width: 100%;
