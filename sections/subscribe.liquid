@@ -1,6 +1,6 @@
 <div class="subscribe py-5 lg:py-7 xl:py-12.5">
   <div class="container">
-    <div class="flex items-center justify-between gap-5 rounded-xl lg:rounded-[20px] px-5 md:px-7 lg:px-9 xl:px-12.5 bg-[#D8F1E5] relative overflow-hidden">
+    <div class="flex justify-between gap-5 rounded-xl lg:rounded-[20px] px-5 md:px-7 lg:px-9 xl:px-12.5 relative z-1 overflow-hidden">
       {%- if section.settings.bg_image != blank -%}
         <img
           src="{{ section.settings.bg_image | image_url: width: 1600 }}"
@@ -12,7 +12,7 @@
       {%- endif -%}
 
       <!-- LEFT CONTENT -->
-      <div class="w-5/12">
+      <div class="w-5/12 py-20">
         <h2 class="text-heading text-2xl lg:text-3xl xl:text-[40px] font-bold mb-4 lg:mb-5">
           {{ section.settings.heading }}
         </h2>
@@ -56,7 +56,7 @@
       </div>
 
       <!-- RIGHT IMAGE -->
-      <div class="w-5/12 h-75 lg:h-86">
+      <div class="h-80 lg:h-86 w-125 lg:w-150 absolute right-5 lg:right-7 xl:right-12.5 -bottom-2 z-2">
         {% if section.settings.side_image != blank %}
           <img
             src="{{ section.settings.side_image | image_url: width: 800 }}"
