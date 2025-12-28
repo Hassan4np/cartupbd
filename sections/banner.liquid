@@ -97,7 +97,7 @@
       <div class="swiper banner-slider">
         <div class="swiper-wrapper">
           {% for block in section.blocks %}
-            <div class="swiper-slide bg-[{{ block.settings.bg_color }}] py-15 md:py-20 lg:py-25 xl:py-30" {{ block.shopify_attributes }}>
+            <div class="swiper-slide py-15 md:py-20 lg:py-25 xl:py-30" style="background-color: {{ block.settings.bg_color }};" {{ block.shopify_attributes }}>
               <div class="container flex items-center gap-4 justify-between">
                 <div class="max-w-137.5">
                     <p class="text-lg lg:text-xl font-bold text-subheading font-poppins flex items-center gap-1 mb-4 lg:mb-5">
@@ -122,7 +122,7 @@
           {% endfor %}
         </div>
 
-        <div class="swiper-pagination md:hidden"></div>
+        <div class="swiper-pagination "></div>
       </div>
 
       <div class="swiper-button-prev bg-white border border-solid border-[#F0F0F0] hover:bg-[#2E2E2E] transition-all duration-300 rounded-full w-11 h-11 flex items-center justify-center shadow"></div>
