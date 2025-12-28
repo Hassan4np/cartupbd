@@ -157,7 +157,7 @@
           {% for link in main_menu.links %}
             <a
               href="{{ link.url }}"
-              class="menu-link text-base md:text-base xl:text-xl text-para2 py-4.5 lg:py-5 px-5! leading-normal relative hover:text-black transition duration-300"
+              class="menu-link text-base md:text-base xl:text-lg  py-4.5 lg:py-5 px-5! font-semibold leading-normal relative hover:text-secondary transition duration-300"
               {% if link.active %}aria-current="page"{% endif %}
             >
               {{ link.title }}
@@ -180,7 +180,7 @@
         <!-- Cart Icon with Badge -->
         <button
           id="cartToggle"
-          class="relative py-4.5 lg:py-5 px-2! cursor-pointer hover:scale-105 transition-all duration-300"
+          class="relative py-4.5 lg:py-5 px-2! text-base md:text-base xl:text-lg! font-semibold cursor-pointer hover:scale-105 transition-all duration-300"
           aria-label="Shopping Cart"
         >
         cart
@@ -194,7 +194,7 @@
         <!-- Profile Icon -->
         <a
           href="{{ routes.account_url }}"
-          class="cursor-pointer py-4.5 lg:py-5 px-2! hover:scale-105 transition-all duration-300"
+          class="cursor-pointer py-4.5 lg:py-5 px-2! text-base md:text-base xl:text-lg font-semibold hover:scale-105 transition-all duration-300"
           aria-label="Account"
         >
           {% comment %} {%- render 'profile-icon' -%} {% endcomment %}

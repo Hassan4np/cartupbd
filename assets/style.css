@@ -28,7 +28,7 @@
 }
 @layer base {
   .btn {
-    @apply rounded-md relative px-3 md:px-6 min-h-10 md:min-h-12.5 flex items-center justify-center bg-primary hover:bg-[#619344]! text-sm md:text-base font-Codec text-white hover:text-heading transition-all duration-300 cursor-pointer;
+    @apply rounded-md relative px-3 md:px-6 min-h-10 md:min-h-12.5 flex items-center justify-center bg-primary hover:bg-[#619344]! text-sm md:text-base  text-white hover:text-heading transition-all duration-300 cursor-pointer;
   }
 
   .btn-light {
@@ -63,45 +63,4 @@ html{
 }
 .scrollbar-hide::-webkit-scrollbar {
   height: 0px !important;
-}
-  @media(max-width: 767px) {
-    .product-details-banner-area .product-description li:before{
-      top: -1px !important;
-    }
-}
-
-.about-content-info p{
-  margin-bottom: 8px;
-}
-
-.quality2 .common-title  p {
-  text-align: center;
-  font-size: 0.875rem; 
-  font-weight: 300;
-  line-height: 160%;
-  max-width: 21.25rem; 
-  margin-left: auto;
-  margin-right: auto;
-  color: #636363;
-}
-.product-details-banner-area h3{
-  font-weight: 600;
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #252624;
-  line-height: 1.5;
-}
-@media (min-width: 768px) {
-.quality2 .common-title   p {
-    font-size: 1.125rem; /* 18px */
-    max-width: max-content;
-    margin-left: 0;
-  }
-}
-
-
-@media (min-width: 1280px) {
- .quality2 .common-title  p {
-    font-size: 1.25rem; /* 20px */
-  }
 }
