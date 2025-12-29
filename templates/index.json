@@ -104,7 +104,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_title": "Vegetables",
-            "collection": ""
+            "collection": "vegetables"
           }
         }
       },
