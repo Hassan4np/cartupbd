@@ -97,7 +97,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_title": "Meats",
-            "collection": ""
+            "collection": "meats"
           }
         },
         "collection_tab_GLAkGy": {
