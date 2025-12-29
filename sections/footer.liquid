@@ -46,6 +46,16 @@
                 {% endfor %}
               </ul>
             </div>
+            <div class="footer-menu-items">
+               <h6 class="text-lg lg:text-xl font-quicksand font-semibold mb-4 lg:mb-5">{{ section.settings.menu_title | default: 'Company' }}</h6>
+               <ul>
+                {% for link in linklists[section.settings.footer_menu].links %}
+                  <li class="mb-3 lg:mb-4 group">
+                    <a href="{{ link.url }}" class="text-sm md:text-base duration-300 text-gray group-hover:text-secondary">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
             
             <div class="footer-social-items">
                <h6 class="text-lg lg:text-xl font-quicksand font-semibold mb-4 lg:mb-5">{{ section.settings.social_title | default: 'Social' }}</h6>
