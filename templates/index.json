@@ -47,16 +47,50 @@
     },
     "top_product": {
       "type": "top-product",
+      "blocks": {
+        "product_card_cTc4GW": {
+          "type": "product_card",
+          "settings": {
+            "bg_image": "shopify://shop_images/banner-1_png.png",
+            "heading": "Everyday Fresh &Clean with OurProducts",
+            "button_text": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "product_card_e36gFX": {
+          "type": "product_card",
+          "settings": {
+            "bg_image": "shopify://shop_images/banner-2_png.png",
+            "heading": "Make your BreakfastHealthy and Easy",
+            "button_text": "Shop Now",
+            "button_link": ""
+          }
+        },
+        "product_card_BcYEpR": {
+          "type": "product_card",
+          "settings": {
+            "bg_image": "shopify://shop_images/banner-3_png.png",
+            "heading": "The best OrganicProducts Online",
+            "button_text": "Shop Now",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_card_cTc4GW",
+        "product_card_e36gFX",
+        "product_card_BcYEpR"
+      ],
       "settings": {}
     },
     "about": {
       "type": "about",
       "settings": {}
-    },
+    }
   },
   "order": [
     "banner",
     "top_product",
-    "about",
+    "about"
   ]
 }
