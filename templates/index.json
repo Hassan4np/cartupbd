@@ -85,12 +85,42 @@
     },
     "popular_products": {
       "type": "popular-products",
-      "settings": {}
+      "blocks": {
+        "collection_tab_hxETFK": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Pet Foods",
+            "collection": ""
+          }
+        },
+        "collection_tab_wRBmTk": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Meats",
+            "collection": ""
+          }
+        },
+        "collection_tab_GLAkGy": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_title": "Vegetables",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_hxETFK",
+        "collection_tab_wRBmTk",
+        "collection_tab_GLAkGy"
+      ],
+      "settings": {
+        "section_title": "Popular Products"
+      }
     },
     "about": {
       "type": "about",
       "settings": {}
-    },
+    }
   },
   "order": [
     "banner",
