@@ -90,7 +90,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_title": "Pet Foods",
-            "collection": ""
+            "collection": "pet-foods"
           }
         },
         "collection_tab_wRBmTk": {
