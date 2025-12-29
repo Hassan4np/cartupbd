@@ -284,13 +284,33 @@
         </div>
 
         <!-- Reviews Tab -->
-        <div id="tab-reviews" class="tab-content hidden">
-          <div class="text-gray-600">
-            <div id="shopify-product-reviews" data-id="{{ product.id }}">
-              {{ product.metafields.spr.reviews }}
-            </div>
-          </div>
+      <div id="tab-reviews" class="tab-content hidden">
+  <div class="text-gray-600">
+    
+    {% if product.metafields.reviews.rating.value %}
+      <!-- Native Shopify Reviews -->
+      <div class="product-reviews">
+        <div class="rating-summary mb-4">
+          <span class="text-2xl font-bold">{{ product.metafields.reviews.rating.value }}</span>
+          <span class="text-gray-500">/ 5</span>
+          <span class="text-sm text-gray-600 ml-2">
+            ({{ product.metafields.reviews.rating_count }} reviews)
+          </span>
         </div>
+        
+        <!-- Review form link -->
+        <a href="#write-review" class="btn btn-primary mb-6">
+          Review Likhen
+        </a>
+        
+        <!-- Reviews list would go here -->
+      </div>
+    {% else %}
+      <p class="text-center py-8">No reviews yet. Be the first!</p>
+    {% endif %}
+    
+  </div>
+</div>
       </div>
     </div>
   </div>
