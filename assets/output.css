@@ -385,6 +385,12 @@
   .ml-auto {
     margin-left: auto;
   }
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
   .block {
     display: block;
   }
@@ -822,8 +828,14 @@
   .bg-border {
     background-color: var(--color-border);
   }
+  .bg-green-600 {
+    background-color: var(--color-green-600);
+  }
   .bg-primary {
     background-color: var(--color-primary);
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
   }
   .bg-transparent {
     background-color: transparent;
