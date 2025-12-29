@@ -46,10 +46,11 @@
                 {% endfor %}
               </ul>
             </div>
+            
             <div class="footer-menu-items">
-               <h6 class="text-lg lg:text-xl font-quicksand font-semibold mb-4 lg:mb-5">{{ section.settings.menu_title | default: 'Company' }}</h6>
+               <h6 class="text-lg lg:text-xl font-quicksand font-semibold mb-4 lg:mb-5">{{ section.settings.category_title | default: 'Category' }}</h6>
                <ul>
-                {% for link in linklists[section.settings.footer_menu].links %}
+                {% for link in linklists[section.settings.category_menu].links %}
                   <li class="mb-3 lg:mb-4 group">
                     <a href="{{ link.url }}" class="text-sm md:text-base duration-300 text-gray group-hover:text-secondary">{{ link.title }}</a>
                   </li>
@@ -129,6 +130,17 @@
       "id": "footer_menu",
       "label": "Footer Menu",
       "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "category_title",
+      "label": "Category Title",
+      "default": "Category"
+    },
+    {
+      "type": "link_list",
+      "id": "category_menu",
+      "label": "Category Menu"
     },
     {
       "type": "text",
