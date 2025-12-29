@@ -11,12 +11,30 @@
   "sections": {
     "banner": {
       "type": "banner",
+      "blocks": {
+        "slide_RGUzbF": {
+          "type": "slide",
+          "settings": {
+            "bg_color": "#f2d3bf",
+            "highlight_text": "100%",
+            "subtitle": "Organic Vegetables",
+            "heading": "The Best Organic Products",
+            "description": "<p>Lorem ipsum dolor sit amet consectetur adipiscing elit</p>",
+            "button_text": "shop now",
+            "button_link": "",
+            "image": "shopify://shop_images/banner1.png"
+          }
+        }
+      },
+      "block_order": [
+        "slide_RGUzbF"
+      ],
       "settings": {}
     },
     "about": {
       "type": "about",
       "settings": {}
-    },
+    }
   },
   "order": [
     "banner",
