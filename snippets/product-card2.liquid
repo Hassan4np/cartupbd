@@ -1,0 +1,36 @@
+  <div
+              class="product-item"
+              data-category="{% for collection in product.collections %}{{ collection.handle }} {% endfor %}"
+              data-price="{{ product.price | money_without_currency | remove: ',' }}"
+              data-tags="{% for tag in product.tags %}{{ tag | handleize }} {% endfor %}"
+              x-show="filterProduct($el)"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform scale-95"
+              x-transition:enter-end="opacity-100 transform scale-100">
+
+              <div class="border border-border rounded-md overflow-hidden hover:shadow-lg duration-300">
+                <a href="{{ product.url }}" class="block">
+                  <div class="product-image relative overflow-hidden">
+                    {% if product.featured_image %}
+                      <img
+                        src="{{ product.featured_image | img_url: 'medium' }}"
+                        alt="{{ product.title }}"
+                        width=""
+                        height=""
+                        class="w-full h-64 object-cover">
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'w-full h-64' }}
+                    {% endif %}
+                  </div>
+                  <div class="p-4">
+                    <h3 class="text-base md:text-lg font-medium text-subheading mb-2">{{ product.title }}</h3>
+                    <div class="flex items-center gap-2">
+                      <span class="text-primary font-semibold">{{ product.price | money }}</span>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="text-gray line-through text-sm">{{ product.compare_at_price | money }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>

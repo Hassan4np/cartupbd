@@ -1,33 +1,227 @@
-<div class="product-all py-10 md:py-14 lg:py-20 xl:py-25 ">
+<div class="product-all py-10 md:py-14 lg:py-20 xl:py-25" x-data="productFilter()">
   <div class="container font-poppins">
-    <div class="">
+    <div class="flex items-start gap-5 lg:gap-6">
+      <!-- Filtering Area -->
       <div class="w-full md:w-3/12">
-        <div class=" border border-[#E9E9E9] rounded-md p-4 lg:p-5">
+        <div class="filtering-area border border-border rounded-md p-4 lg:p-5">
+
+          <!-- Category Filter -->
           <div class="product-category-area mb-4 lg:mb-5">
-            <h3 class="text-subheading font-poppins! capitalize text-base md:text-lg pb-2 lg:pb-3 border-b border-b-[#E9E9E9] mb-4 lg:mb-5">product Category</h3>
+            <h3 class="text-subheading font-poppins! capitalize text-base md:text-lg pb-2 lg:pb-3 border-b border-b-border mb-4 lg:mb-5">Product Category</h3>
             <ul>
-              <li class="mb-3 lg:mb-4 last:mb-0">
-                <a class="category-list text-sm md:text-base font-medium text-gray hover:text-secondary duration-300 cursor-pointer flex items-center justify-between gap-1 w-full">
-                  <span class="category-name">Juice & Drinks</span>
-                  <span class="all-item">[20]</span>
+              <li class="mb-3 lg:mb-4">
+                <a
+                  @click="selectCategory('all')"
+                  :class="selectedCategory === 'all' ? 'text-secondary' : 'text-gray hover:text-secondary'"
+                  class="category-list text-sm md:text-base font-medium duration-300 cursor-pointer flex items-center justify-between gap-1 w-full">
+                  <span class="category-name">All Products</span>
+                  <span class="all-item">[{{ collections.all.products_count }}]</span>
                 </a>
               </li>
+              {% for collection in collections %}
+                {% if collection.products_count > 0 %}
+                  <li class="mb-3 lg:mb-4 last:mb-0">
+                    <a
+                      @click="selectCategory('{{ collection.handle }}')"
+                      :class="selectedCategory === '{{ collection.handle }}' ? 'text-secondary' : 'text-gray hover:text-secondary'"
+                      class="category-list text-sm md:text-base font-medium duration-300 cursor-pointer flex items-center justify-between gap-1 w-full">
+                      <span class="category-name">{{ collection.title }}</span>
+                      <span class="all-item">[{{ collection.products_count }}]</span>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </div>
-          <div class="product-price-filter">
-            <h3 class="text-subheading font-poppins! capitalize text-base md:text-lg pb-2 lg:pb-3 border-b border-b-[#E9E9E9] mb-4 lg:mb-5">Filter By Price</h3>
-            <ul>
-              <li class="mb-3 lg:mb-4 last:mb-0">
-                <a class="category-list text-sm md:text-base font-medium text-gray hover:text-secondary duration-300 cursor-pointer flex items-center justify-between gap-1 w-full">
-                  <span class="category-name">Juice & Drinks</span>
-                  <span class="all-item">[20]</span>
-                </a>
-              </li>
-            </ul>
+
+          <!-- Price Filter -->
+          <div class="product-price-filter mb-4 lg:mb-5">
+            <h3 class="text-subheading font-poppins! capitalize text-base md:text-lg pb-2 lg:pb-3 border-b border-b-border mb-4 lg:mb-5">Filter By Price</h3>
+            <div class="relative z-1 mb-4 lg:mb-5">
+              <input
+                type="range"
+                x-model.number="minPrice"
+                min="0"
+                max="500"
+                step="10"
+                class="absolute w-full h-1.5 appearance-none bg-transparent pointer-events-auto z-10"
+                style="background: none;">
+              <input
+                type="range"
+                x-model.number="maxPrice"
+                min="0"
+                max="500"
+                step="10"
+                class="absolute w-full h-1.5 appearance-none bg-transparent pointer-events-auto z-10"
+                style="background: none;">
+              <div class="bg-border h-1.5 w-full rounded-full relative">
+                <div class="h-full bg-primary rounded-full absolute" :style="`left: ${(minPrice/500)*100}%; width: ${((maxPrice-minPrice)/500)*100}%`"></div>
+              </div>
+            </div>
+            <h3 class="text-subheading font-poppins! capitalize text-base md:text-lg">
+              Price:
+              <span class="text-gray" x-text="`tk${minPrice} - tk${maxPrice}`"></span>
+            </h3>
+            <button @click="applyPriceFilter()" class="btn mt-4 lg:mt-5 w-full">Filter</button>
           </div>
+          <!-- Reset Filter -->
+          <button @click="resetFilters()" class="btn btn-outline w-full mt-4 lg:mt-5">Reset Filters</button>
         </div>
       </div>
-      <div class="w-full md:w-9/12"></div>
+
+      <!-- Product Display Area -->
+      <div class="product-all-area w-full md:w-9/12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5 xl:gap-6">
+          {% for product in collections.all.products %}
+            <div
+              class="product-item"
+              data-category="{% for collection in product.collections %}{{ collection.handle }} {% endfor %}"
+              data-price="{{ product.price | money_without_currency | remove: ',' }}"
+              data-tags="{% for tag in product.tags %}{{ tag | handleize }} {% endfor %}"
+              x-show="filterProduct($el)"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform scale-95"
+              x-transition:enter-end="opacity-100 transform scale-100">
+
+              <div class="border border-border rounded-md overflow-hidden hover:shadow-lg duration-300">
+                <a href="{{ product.url }}" class="block">
+                  <div class="product-image relative overflow-hidden">
+                    {% if product.featured_image %}
+                      <img
+                        src="{{ product.featured_image | img_url: 'medium' }}"
+                        alt="{{ product.title }}"
+                        width=""
+                        height=""
+                        class="w-full h-64 object-cover">
+                    {% else %}
+                      {{ 'product-1' | placeholder_svg_tag: 'w-full h-64' }}
+                    {% endif %}
+                  </div>
+                  <div class="p-4">
+                    <h3 class="text-base md:text-lg font-medium text-subheading mb-2">{{ product.title }}</h3>
+                    <div class="flex items-center gap-2">
+                      <span class="text-primary font-semibold">{{ product.price | money }}</span>
+                      {% if product.compare_at_price > product.price %}
+                        <span class="text-gray line-through text-sm">{{ product.compare_at_price | money }}</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- No Products Found -->
+        <div x-show="!hasVisibleProducts()" class="text-center py-10">
+          <p class="text-gray text-lg">No products found matching your filters.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  function productFilter() {
+  return {
+    selectedCategory: 'all',
+    selectedTags: [],
+    minPrice: 0,
+    maxPrice: 500,
+    priceFilterActive: false,
+    
+    selectCategory(category) {
+      this.selectedCategory = category;
+      this.updateProducts();
+    },
+    
+    toggleTag(tag) {
+      const index = this.selectedTags.indexOf(tag);
+      if (index > -1) {
+        this.selectedTags.splice(index, 1);
+      } else {
+        this.selectedTags.push(tag);
+      }
+      this.updateProducts();
+    },
+    
+    applyPriceFilter() {
+      this.priceFilterActive = true;
+      this.updateProducts();
+    },
+    
+    resetFilters() {
+      this.selectedCategory = 'all';
+      this.selectedTags = [];
+      this.minPrice = 0;
+      this.maxPrice = 500;
+      this.priceFilterActive = false;
+      this.updateProducts();
+    },
+    
+    filterProduct(element) {
+      const categories = element.dataset.category.trim().split(' ');
+      const price = parseFloat(element.dataset.price);
+      const tags = element.dataset.tags.trim().split(' ');
+      
+      // Category filter
+      if (this.selectedCategory !== 'all' && !categories.includes(this.selectedCategory)) {
+        return false;
+      }
+      
+      // Price filter
+      if (this.priceFilterActive && (price < this.minPrice || price > this.maxPrice)) {
+        return false;
+      }
+      
+      // Tags filter
+      if (this.selectedTags.length > 0) {
+        const hasTag = this.selectedTags.some(tag => tags.includes(tag));
+        if (!hasTag) return false;
+      }
+      
+      return true;
+    },
+    
+    hasVisibleProducts() {
+      const products = document.querySelectorAll('.product-item');
+      return Array.from(products).some(product => this.filterProduct(product));
+    },
+    
+    updateProducts() {
+      // Force Alpine to re-evaluate x-show directives
+      this.$nextTick(() => {});
+    }
+  }
+  }
+</script>
+
+<style>
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color, #10b981);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color, #10b981);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+</style>
