@@ -21,17 +21,7 @@
     align-items: center;
     justify-content: center;
   }
-  /* .menu-link::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: currentColor;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  } */
+
   .menu-link.active::before,
   .menu-link:hover::before {
     opacity: 1;
@@ -48,59 +38,7 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-  .quantity-btn:hover {
-    border-color: #1EB278;
-    color: #1EB278;
-  }
-  .quantity-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  div#cartItems img {
-    border: 1px solid #E1E1E1;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 8px !important;
-  }
-  div#cartItems h3 {
-    color: #252624;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 120%; 
-    text-transform: capitalize !important;
-  }
-  div#cartItems p {
-    color: #7F847B;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 130%;
-    max-width: 220px;
-    margin-bottom: 15px !important;
-  }
-  div#cartItems span {
-    font-size: 18px;
-  }
-  div#cartItems .border-b {
-    border-color: #E1E1E1;
-  }
-  button.quantity-btn {
-    border-radius: 50%;
-    background: #F2F7F4;
-  }
-  @media(max-width: 767px) {
-    div#cartItems h3 {
-      font-size: 14px;
-    }
-    div#cartItems p {
-      font-size: 12px;
-    }
-     div#cartItems img {
-    height: 80px;
-  }
-  .main-header .btn-6 {
-    padding: 12px 24px !important;
-}
-  }
+
 {% endstylesheet %}
 
 <!-- Main Header -->
@@ -209,19 +147,19 @@
 <!-- Cart Popup -->
 <div
   id="cartPopup"
-  class="fixed inset-0 bg-[rgba(0,0,0,0.10)] backdrop-blur-[1px] hidden z-[9999] opacity-0 transition-opacity duration-300"
+  class="fixed inset-0 bg-[rgba(0,0,0,0.10)] backdrop-blur-[1px] hidden z-9999 opacity-0 transition-opacity duration-300"
   role="dialog"
   aria-modal="true"
   aria-label="Shopping Cart">
   <div
     id="cartPanel"
-    class="bg-white w-[90%] md:max-w-md lg:max-w-[560px] ml-auto p-4 md:p-8 flex flex-col transform translate-x-full transition-transform duration-300 overflow-y-auto h-[80%] mt-22 xl:mt-35"
+    class="bg-[#F8F8F8] w-[90%] md:max-w-100 lg:max-w-120 ml-auto p-4 lg:p-5 flex flex-col transform translate-x-full transition-transform duration-300 overflow-y-auto h-[80%] mt-22 xl:mt-35"
   >
     <!-- Cart Header -->
-    <div class="flex justify-between items-center mb-3 md:mb-6 pb-3 md:pb-4 border-b border-[#E1E1E1]">
+    <div class="flex justify-between items-center mb-3 md:mb-4 pb-3 md:pb-4 border-b border-[#E1E1E1]">
       <div class="flex items-center gap-2">
         {%- render 'cart-icon' -%}
-        <h2 class="text-lg lg:text-[22px] text-heading font-light leading-tight -mb-1.5">Cart (<span id="cart-popup-count">0</span>)</h2>
+        <h2 class="text-base lg:text-xl text-heading font-light leading-tight -mb-1.5">Cart (<span id="cart-popup-count">0</span>)</h2>
       </div>
       <button 
         id="cartClose" 
@@ -233,11 +171,11 @@
     </div>
     
     <!-- Cart Items Container -->
-    <div id="cartItemsContainer" class="flex-1 overflow-y-auto mb-6">
+    <div id="cartItemsContainer" class="flex-1 overflow-y-auto mb-2">
       <div id="emptyCart" class="text-center py-12 hidden">
-        <figure class="flex justify-center">
+        {% comment %} <figure class="flex justify-center">
           {%- render 'empty-cart-icon' -%}
-        </figure>
+        </figure> {% endcomment %}
         <p class="text-heading text-base md:text-xl lg:text-[26px] font-semibold leading-[120%] mb-3 mt-15">Your cart is currently empty</p>
         <p class="text-para text-xs lg:text-xl font-light leading-normal mb-5 mx-auto">Explore our products to begin your wellness journey.</p>
         <button onclick="document.getElementById('cartClose').click()" class="btn-6 bg-primary w-full rounded-2xl! text-sm xl:text-xl leading-[160%] text-white! border border-primary! hover:text-wheading! px-6 py-3">
@@ -249,25 +187,21 @@
     </div>
 
     <!-- Cart Footer -->
-    <div id="cartFooter" class="border-t border-[#E1E1E1] pt-4 hidden">
-      <div class="flex justify-between items-center">
-        <span class="text-base lg:text-[22px] font-light leading-[120%] text-para">Subtotal:</span>
-        <span id="cartSubtotal" class="text-base md:text-lg lg:text-[22px] font-semibold text-heading">£0.00</span>
+    <div id="cartFooter" class="hidden">
+      <div class="flex justify-between gap-3 items-center mb-3">
+        <span class="text-base lg:text-lg font-light leading-[120%] text-para">Subtotal:</span>
+        <span id="cartSubtotal" class="text-base lg:text-lg  font-semibold text-heading">tk 0.00</span>
       </div>
-      <p class="text-[15px] lg:text-[22px] font-light leading-[120%] text-heading mb-3 md:mb-5 mt-3 md:mt-6">
-        Estimated Delivery:
-        <span class="text-[13px] lg:text-[22px] font-light leading-[120%] text-para block mt-3">UK orders typically arrive in 2–3 business days.</span>
-      </p>
       <a
         href="/checkout"
-        class="btn-6 w-full bg-primary mb-3 rounded-lg! md:rounded-2xl! text-base xl:text-xl leading-[160%] text-wheading"
+        class="btn min-w-full mb-2 lg:mb-3"
       >
         Proceed to Checkout
         <span></span>
       </a>
       <button
         id="continueShopping"
-        class="btn-6 w-full bg-white mb-3 rounded-lg! md:rounded-2xl! text-base xl:text-xl leading-[160%] text-primary! border border-primary! hover:text-wheading!"
+        class="btn min-w-full bg-secondary!"
         onclick="document.getElementById('cartClose').click()">
         Continue Shopping
         <span></span>
@@ -641,15 +575,15 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             
             return `
-              <div class="flex gap-3 md:gap-5 py-2.5 md:py-5 border-b border-[#E1E1E1]" data-line="${actualIndex + 1}">
+              <div class="px-5 flex gap-2 md:gap-5 py-2.5 md:py-5 border-b border-[#E1E1E1]" data-line="${actualIndex + 1}">
                 <img 
                   src="${item.featured_image ? item.featured_image.url : item.image}" 
                   alt="${item.product_title}" 
-                  class="w-20 md:w-28 lg:w-30 h-20 md:h-28 lg:h-30 object-contain rounded-lg border border-[#E1E1E1] bg-white flex-shrink-0" 
+                  class="size-15 lg:size-20 object-contain rounded-lg border border-[#E1E1E1] bg-white flex-shrink-0" 
                 />
                 <div class="flex flex-col justify-between flex-1 min-w-0">
                   <div>
-                    <h3 class="text-sm md:text-base lg:text-[22px] font-semibold text-heading leading-tight mb-1 md:mb-2 capitalize">${item.product_title}</h3>
+                    <h3 class="text-sm md:text-base font-poppins text-heading leading-none! mb-1 md:mb-2 capitalize">${item.product_title}</h3>
                     ${item.variant_title && item.variant_title !== 'Default Title' ? `
                       <p class="text-xs md:text-sm lg:text-base text-para font-light leading-normal mb-2 md:mb-3 max-w-[220px]">${item.variant_title}</p>
                     ` : ''}
@@ -682,12 +616,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     <div>
                       <p class="text-xs text-para line-through opacity-60 mb-1">£${originalPrice.toFixed(2)}</p>
                       <p class="font-semibold text-sm md:text-lg lg:text-[22px] text-primary leading-tight">
-                        £${displayPrice.toFixed(2)}
+                        Tk${displayPrice.toFixed(2)}
                       </p>
                     </div>
                   ` : `
-                    <p class="font-semibold text-sm md:text-lg lg:text-[22px] text-heading leading-tight">
-                      £${displayPrice.toFixed(2)}
+                    <p class="font-semibold text-sm! md:text-base! text-secondary">
+                      Tk ${displayPrice.toFixed(2)}
                     </p>
                   `}
                   <button 
@@ -701,9 +635,9 @@ document.addEventListener('DOMContentLoaded', function () {
           
           // ✅ Use Shopify's total_price (includes all discounts)
           const totalPrice = cart.total_price / 100;
-          console.log('💵 Subtotal: £' + totalPrice.toFixed(2));
+          console.log('💵 Subtotal: Tk' + totalPrice.toFixed(2));
           
-          cartSubtotalEl.textContent = `£${totalPrice.toFixed(2)}`;
+          cartSubtotalEl.textContent = `Tk ${totalPrice.toFixed(2)}`;
           
           // Add event listeners for quantity buttons
           document.querySelectorAll('.quantity-btn').forEach(btn => {
