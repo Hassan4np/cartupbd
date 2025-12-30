@@ -129,6 +129,37 @@
     },
     "method": {
       "type": "method",
+      "blocks": {
+        "method_item_Mi4xh4": {
+          "type": "method_item",
+          "settings": {
+            "icon": "shopify://shop_images/icon-1_svg.png",
+            "title": "Best prices & offers",
+            "description": "Orders $50 or more"
+          }
+        },
+        "method_item_pqyHFq": {
+          "type": "method_item",
+          "settings": {
+            "icon": "shopify://shop_images/icon-1_svg.png",
+            "title": "Free delivery",
+            "description": "24/7 amazing services"
+          }
+        },
+        "method_item_RHQQhd": {
+          "type": "method_item",
+          "settings": {
+            "icon": "shopify://shop_images/icon-5_svg.png",
+            "title": "Easy returns",
+            "description": "Within 30 days"
+          }
+        }
+      },
+      "block_order": [
+        "method_item_Mi4xh4",
+        "method_item_pqyHFq",
+        "method_item_RHQQhd"
+      ],
       "settings": {}
     },
     "about": {
