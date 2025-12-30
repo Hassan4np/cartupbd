@@ -20,6 +20,8 @@
         "phone": "+91 123 4567890",
         "menu_title": "Company",
         "footer_menu": "company",
+        "category_title": "Category",
+        "category_menu": "category",
         "social_title": "Social",
         "facebook_url": "https://www.facebook.com",
         "twitter_url": "https://www.x.com",
