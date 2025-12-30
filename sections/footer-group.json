@@ -19,10 +19,10 @@
         "email": "example@email.com",
         "phone": "+91 123 4567890",
         "menu_title": "Company",
-        "footer_menu": "footer",
+        "footer_menu": "company",
         "social_title": "Social",
-        "facebook_url": "",
-        "twitter_url": "",
+        "facebook_url": "https://www.facebook.com",
+        "twitter_url": "https://www.x.com",
         "instagram_url": "",
         "company_name": "FoodTrove"
       }
