@@ -14,18 +14,17 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
-        "show_policy": true,
-        "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "footer_description": "FoodTrove is the biggest market of grocery products. Get your daily needs from our store.",
+        "address": "51 Green St.Huntington ohaio beach ontario, NY11746 KY 4783, USA.",
+        "email": "example@email.com",
+        "phone": "+91 123 4567890",
+        "menu_title": "Company",
+        "footer_menu": "footer",
+        "social_title": "Social",
+        "facebook_url": "",
+        "twitter_url": "",
+        "instagram_url": "",
+        "company_name": "FoodTrove"
       }
     }
   },
