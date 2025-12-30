@@ -164,7 +164,15 @@
     },
     "subscribe": {
       "type": "subscribe",
-      "settings": {}
+      "settings": {
+        "heading": "Stay home & get your dailyneeds from our shop",
+        "highlight_text": "Nest Mart",
+        "description": "Start You'r Daily Shopping with",
+        "placeholder": "Your email address",
+        "button_text": "Subscribe",
+        "bg_image": "shopify://shop_images/footer.png",
+        "side_image": "shopify://shop_images/banner-9_png.png"
+      }
     },
     "about": {
       "type": "about",
